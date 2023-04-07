@@ -1,0 +1,70 @@
+#outer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+    "header header header"
+    "sidebar main cart"
+    "footer footer footer";
+}
+
+header {
+    grid-area: header;
+    padding: 10px;
+    text-align: center;
+    background-image: url("../assets/images/header.jpg");
+}
+
+h1 {
+    padding: 0.5rem;
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+main {
+    grid-area: main;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#filters {
+    padding: 10px;
+    grid-area: sidebar;
+    min-width: 200px;
+}
+
+#cart {
+    min-width: 200px;
+    grid-area: cart;
+    padding: 10px;
+}
+
+footer {
+    margin-top: 1.6rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+    grid-area: footer;
+    padding: 10px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    #outer {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "header"
+        "main"
+        "cart"
+        "sidebar"
+        "footer";
+    }
+    main {
+        padding: 20px;
+    }
+}

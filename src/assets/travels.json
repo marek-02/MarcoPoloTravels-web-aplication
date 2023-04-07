@@ -1,0 +1,70 @@
+{
+    "travels": [
+      {
+        "name": "Słoneczny Cypr",
+        "destination": "Cypr",
+        "startDate": "2023-06-03",
+        "endDate": "2023-06-13",
+        "price" : 1369,
+        "seats" : 20,
+        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "imgLink" : "/assets/images/Cypr.jpg",
+        "rate" : 4
+      },
+      {
+        "name": "Złote Piaski",
+        "destination": "Bułgaria",
+        "startDate": "2023-07-10",
+        "endDate": "2023-07-24",
+        "price" : 1129,
+        "seats" : 40,
+        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "imgLink" : "/assets/images/Bułgaria.jpg",
+        "rate" : 3
+      },
+      {
+        "name": "Bajeczne Malediwy",
+        "destination": "Malediwy",
+        "startDate": "2023-09-05",
+        "endDate": "2023-09-19",
+        "price" : 1449,
+        "seats" : 30,
+        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "imgLink" : "/assets/images/Malediwy.jpg",
+        "rate" : 5
+      },
+      {
+        "name": "Turcja - zwiedzanie i wypoczynek",
+        "destination": "Turcja",
+        "startDate": "2023-08-01",
+        "endDate": "2023-08-16",
+        "price" : 1629,
+        "seats" : 25,
+        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "imgLink" : "/assets/images/Turcja.jpg",
+        "rate" : 2
+      },
+      {
+        "name": "Egzotyczna Tajlandia",
+        "destination": "Tajlandia",
+        "startDate": "2023-10-12",
+        "endDate": "2023-10-28",
+        "price" : 1199,
+        "seats" : 15,
+        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "imgLink" : "/assets/images/Tajlandia.jpg",
+        "rate" : 1
+      },
+      {
+        "name": "Malediwy VIP",
+        "destination": "Malediwy",
+        "startDate": "2023-10-05",
+        "endDate": "2023-10-19",
+        "price" : 1979,
+        "seats" : 20,
+        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "imgLink" : "/assets/images/Malediwy.jpg",
+        "rate" : 4
+      }
+    ]
+   }

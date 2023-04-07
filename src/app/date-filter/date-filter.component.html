@@ -1,0 +1,11 @@
+<h3>Data</h3>
+<div id="when">
+    <label>
+        od
+        <input type="date" (change)="changeMin($event)" [value]="ts.minDate | date:'yyyy-MM-dd'">
+    </label>
+    <label>
+        do
+        <input type="date" (change)="changeMax($event)" [value]="ts.maxDate | date:'yyyy-MM-dd'">
+    </label>
+</div>

@@ -1,0 +1,33 @@
+<article class="card" [ngClass]="{'minPrice': travel.price == ts.minPrice, 'maxPrice': travel.price == ts.maxPrice}">
+    <img [src]="travel.imgLink">
+    <h2>{{ travel.name | uppercase }}</h2>
+    
+    <div id="flex-container">
+        <div id="datas">    
+            <ul>
+                <li> <strong> {{ travel.destination | uppercase }} </strong> </li>
+                <li> Od: <strong> {{ travel.startDate | date:"dd.MM.yyyy" }} </strong> </li>
+                <li> Do: <strong> {{ travel.endDate | date:"dd.MM.yyyy" }} </strong> </li>
+                <li> Wolne miejsca: <strong> {{ travel.seats - reservedSeats }} </strong> </li>
+            </ul>
+        </div>
+        <p id="description">{{ travel.description }}</p>
+    </div>
+
+
+    <h1> {{ travel.price | currency:'EUR' }} </h1>
+    <div id="button-container">
+        <button id="minus" 
+        (click)="resign()"
+        [ngStyle]="{'background-color':'#E97777'}"
+        [hidden]="reservedSeats == 0"> - </button>
+        <button id="plus" 
+        (click)="reserve()" 
+        [ngStyle]="{'background-color': travel.seats - reservedSeats > 3 ? '#E8F3D6' : '#FCF9BE'}" 
+        [hidden]="travel.seats == reservedSeats"> + </button>
+    </div>
+    <p id="warning"> {{ warning }} </p>
+    <p>Aktualna ocena: {{ travel.rate }}</p>
+    <app-rating [rating]="travel.rate" (rate)="changeRate($event)"></app-rating>
+    <p id="delete" (click)="delete()">Usuń</p>
+</article>
