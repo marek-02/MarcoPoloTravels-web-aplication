@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from "@angular/core";
+import { min } from "rxjs";
 import { Travel } from "./travel";
 
 @Pipe({ name: 'filterPipe', pure: false })
 export class FilterPipe implements PipeTransform {
-    transform(travels: Travel[], filteredLocations: string[], filteredPrice: number, minDate: Date, maxDate: Date, filteredStars: number[]): Travel[] {
+    transform(travels: Travel[], filteredLocations: string[], filteredPrice: number, minDate: Date | undefined, maxDate: Date | undefined, filteredStars: number[]): Travel[] {
     if (!travels)
         return []
     if(filteredLocations && filteredLocations.length != 0) {
@@ -16,13 +17,13 @@ export class FilterPipe implements PipeTransform {
             return travel.price <= filteredPrice
         })
     }
-    if(!isNaN(minDate.getTime())) {
+    if(!(minDate === undefined) && !isNaN(minDate.getTime())) {
         travels = travels.filter(travel => {
             let startDate = new Date(travel.startDate)                  
             return startDate >= minDate
         })
     }
-    if(!isNaN(maxDate.getTime())) {
+    if(!(maxDate === undefined) && !isNaN(maxDate.getTime())) {
         travels = travels.filter(travel => {
             let endDate = new Date(travel.endDate)                  
             return endDate <= maxDate

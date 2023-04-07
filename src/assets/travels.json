@@ -7,8 +7,17 @@
         "endDate": "2023-06-13",
         "price" : 1369,
         "seats" : 20,
-        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "description" : "Słoneczny Cypr to wycieczka, która pozwoli Ci odpocząć na pięknych plażach i zwiedzić malownicze miasta tej urokliwej wyspy. Podczas wycieczki zwiedzisz między innymi stolicę Nikozję, wpisaną na listę UNESCO, a także zwiedzisz starożytną twierdzę w Famagusta. Możesz również spędzić czas na relaksie na piaszczystych plażach albo zażyć kąpieli w turkusowym morzu. Nasz wykwalifikowany przewodnik opowie Ci o historii i kulturze tego wyjątkowego miejsca. Nie przegap okazji, aby poznać urokliwy Cypr z MarcoPolo Travels!",
         "imgLink" : "/assets/images/Cypr.jpg",
+        "allImages" : ["/assets/images/Cypr.jpg", "/assets/images/Cypr2.jpg", "/assets/images/Cypr3.jpg"],
+        "opinions": [
+          {
+            "user": "malwina13pl",
+            "details": "Super wycieczka! Wspaniałe widoki i niezapomniany wypoczynek. Szkoda tylko, że taka droga.",
+            "dateOfPurchase": "2022-05-14",
+            "rate": 4
+          }          
+        ],
         "rate" : 4
       },
       {
@@ -18,8 +27,16 @@
         "endDate": "2023-07-24",
         "price" : 1129,
         "seats" : 40,
-        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "description" : "Złote Piaski to wycieczka, która pozwoli Ci odpocząć na jednej z najpiękniejszych plaż w Europie. Złote Piaski to nadmorska miejscowość, która słynie z pięknych, piaszczystych plaż i ciepłego, turkusowego morza. Podczas wycieczki zwiedzisz również stolicę Bułgarii - Sofie, wpisaną na listę UNESCO, a także zwiedzisz starożytne miasto Plovdiv, drugie co do wielkości miasto w kraju. Możesz również spróbować lokalnych specjałów kuchni bułgarskiej i poznać ciekawe zwyczaje i tradycje tego kraju. Nie przegap okazji, aby poznać piękną Bułgarię z MarcoPolo Travels!",
         "imgLink" : "/assets/images/Bułgaria.jpg",
+        "allImages" : ["/assets/images/Bułgaria.jpg", "/assets/images/Bułgaria2.jpg", "/assets/images/Bułgaria3.jpg"],
+        "opinions": [
+          {
+            "user": "kaczkaDziwaczka14",
+            "details": "Wycieczka w porządku. Jedzenie i zakwaterowanie bez szału, ale zabawa przednia.",
+            "dateOfPurchase": "2021-08-29",
+            "rate": 3
+          }],
         "rate" : 3
       },
       {
@@ -29,8 +46,36 @@
         "endDate": "2023-09-19",
         "price" : 1449,
         "seats" : 30,
-        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "description" : "Bajeczne Malediwy to wycieczka, która pozwoli Ci zaznać luksusu i relaksu na jednych z najpiękniejszych wysp na świecie. Podczas wycieczki zatrzymasz się na przepięknych, prywatnych wyspach, gdzie będziesz mógł zażywać kąpieli w ciepłym, turkusowym morzu i relaksować się na piaszczystych plażach. Możesz również spróbować lokalnych specjałów kuchni malediwskiej i skorzystać z różnorodnych atrakcji, takich jak nurkowanie czy rejsy łodzią. Niezapomniane widoki i niepowtarzalny klimat Malediwów zapadną Ci na długo w pamięci. Nie przegap okazji, aby zaznać luksusu na Bajecznych Malediwach z MarcoPolo Travels!",
         "imgLink" : "/assets/images/Malediwy.jpg",
+        "allImages" : ["/assets/images/Malediwy.jpg", "/assets/images/Malediwy2.jpg", "/assets/images/Malediwy3.jpg"],
+        "opinions": [],
+        "rate" : 5
+      },
+      {
+        "name": "Polskie wakacje",
+        "destination": "Polska",
+        "startDate": "2023-07-13", 
+        "endDate": "2023-07-27", 
+        "price" : 1399, 
+        "seats" : 15, 
+        "description" : "Polskie wakacje z MarcoPolo Travels to niezapomniana przygoda pełna pięknych widoków i ciekawych miejsc. Odwiedzimy Karkonosze, gdzie będziemy mogli się zachwycać widokiem na panoramę gór oraz poznamy historię tego magicznego miejsca. Przejedziemy się słynnym Kolejką Linową na Kasprowy Wierch i zakosztujemy tradycyjnych potraw w Zakopanem. Nie zabraknie również wycieczki do stolicy - Warszawy, gdzie zobaczymy m.in. Zamek Królewski i Stare Miasto. Doświadczenie polskiej kultury, przyrody i historii z nami będzie niezapomnianym wakacyjnym przeżyciem.", 
+        "imgLink" : "/assets/images/Polska.jpg", 
+        "allImages" : ["/assets/images/Polska.jpg", "/assets/images/Polska2.jpg", "/assets/images/Polska3.jpg"],
+        "opinions": [
+          {
+            "user": "DawidK13",
+            "details": "Każdemu mogę polecić tą wycieczkę! Wszystko dobrze zorganizowane i na wysokim poziomie. Nic tylko rezerwować.",
+            "dateOfPurchase": "2022-07-18",
+            "rate": 5
+          },
+          {
+            "user": "kaczkaDziwaczka14",
+            "details": "Na prawdę fajna wycieczka. Zakochałem się w Karkonoszach i ogólnie polskich górach. Warszawa też całkiem ładna, ale ceny niestety wysokie. Ogólnie oceniam 4/5.",
+            "dateOfPurchase": "2022-01-10",
+            "rate": 4
+          }
+        ],
         "rate" : 5
       },
       {
@@ -40,8 +85,16 @@
         "endDate": "2023-08-16",
         "price" : 1629,
         "seats" : 25,
-        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "description" : "Turcja - zwiedzanie i wypoczynek to wycieczka, która pozwoli Ci zarówno zwiedzić interesujące zabytki, jak i odpocząć na pięknych plażach. Podczas wycieczki zwiedzisz między innymi starożytne miasto Efez, wpisane na listę UNESCO, a także zwiedzisz największe na świecie sułtańskie mauzoleum - Meczet Sułtana Ahmeta. Możesz również spędzić czas na relaksie na piaszczystych plażach albo zażyć kąpieli w ciepłym, turkusowym morzu. Nasz wykwalifikowany przewodnik opowie Ci o historii i kulturze tego wyjątkowego miejsca. Nie przegap okazji, aby poznać urokliwą Turcję z MarcoPolo Travels!",
         "imgLink" : "/assets/images/Turcja.jpg",
+        "allImages" : ["/assets/images/Turcja.jpg", "/assets/images/Turcja2.jpg", "/assets/images/Turcja3.jpg"],
+        "opinions": [
+          {
+            "user": "xcbwtr13",
+            "details": "Wycieczka mocno przeciętna. Mieszkaliśmy w jakichś niezbyt zadbanych apartamentach, gdzie obsługa pracowała jakby za karę. Zabytki może i ciekawe, ale żeby się jakkolwiek dogadać albo czegoś dowiedzieć to trzeba się strasznie wymęczyć.",
+            "dateOfPurchase": "2020-06-16",
+            "rate": 2
+          }],
         "rate" : 2
       },
       {
@@ -51,9 +104,17 @@
         "endDate": "2023-10-28",
         "price" : 1199,
         "seats" : 15,
-        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "description" : "Egzotyczna Tajlandia to wycieczka, która pozwoli Ci poznać niezwykłą kulturę i piękno tego egzotycznego kraju. Podczas wycieczki zwiedzisz między innymi stolicę Tajlandii - Bangkok, a także zwiedzisz malownicze miasta Chiang Mai i Ayutthaya. Możesz również zwiedzić świątynie buddyjskie i poznać lokalne zwyczaje i tradycje. Nie można też pominąć wizyty w parku narodowym i spróbowania egzotycznych potraw tajskiej kuchni. Niezapomniane widoki i niepowtarzalny klimat Tajlandii zapadną Ci na długo w pamięci. Nie przegap okazji, aby poznać egzotyczną Tajlandię z MarcoPolo Travels!",
         "imgLink" : "/assets/images/Tajlandia.jpg",
-        "rate" : 1
+        "allImages" : ["/assets/images/Tajlandia.jpg", "/assets/images/Tajlandia2.jpg", "/assets/images/Tajlandia3.jpg"],
+        "opinions": [
+          {
+            "user": "TadeuszFortuna",
+            "details": "Egzotyczna Tajlandia była niezapomnianą przygodą, ale nie do końca spełniła moje oczekiwania. Zwiedzanie z przewodnikiem było interesujące i pouczające, ale niektóre atrakcje były tłoczne i sztuczne. Plaże były piękne, ale niestety pogoda nie dopisała przez większość wyjazdu. Ogólnie oceniam wycieczkę na 3/5.",
+            "dateOfPurchase": "2022-02-23",
+            "rate": 3
+          }],
+        "rate" : 3
       },
       {
         "name": "Malediwy VIP",
@@ -62,8 +123,22 @@
         "endDate": "2023-10-19",
         "price" : 1979,
         "seats" : 20,
-        "description" : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta vel corporis aperiam delectus, laborum, optio soluta maxime recusandae voluptatum ad qui explicabo autem accusamus, corrupti tempore pariatur dignissimos blanditiis ab?",
+        "description" : "Malediwy VIP to luksusowa wycieczka, która pozwoli Ci zaznać niezwykłego luksusu na jednych z najpiękniejszych wysp na świecie. Podczas wycieczki zatrzymasz się na prestiżowych, prywatnych wyspach, gdzie będziesz mógł korzystać z najlepszych udogodnień i relaksować się na prywatnych plażach. Możesz skorzystać z różnorodnych atrakcji, takich jak masaże i zabiegi spa, rejsy łodzią czy nurkowanie. Nasz wykwalifikowany przewodnik zadba o wszelkie Twoje potrzeby i zapewni pełen komfort podczas pobytu. Niezapomniane widoki i luksusowe warunki Malediwów VIP zapadną Ci na długo w pamięci. Nie przegap okazji, aby zaznać niezwykłego luksusu na Malediwach z MarcoPolo Travels!",
         "imgLink" : "/assets/images/Malediwy.jpg",
+        "allImages" : ["/assets/images/Malediwy.jpg", "/assets/images/Malediwy2.jpg", "/assets/images/Malediwy3.jpg"],
+        "opinions": [
+          {
+            "user": "tomekIT",
+            "details": "Malediwy VIP to była naprawdę wyjątkowa wycieczka! Plaże były niesamowite i pływanie z delfinami to niezapomniane przeżycie. Hotele były luksusowe i obsługa była bardzo uprzejma. Jedynym minusem były ceny wycieczek fakultatywnych, które były trochę zbyt wysokie w porównaniu do jakości. Ogólnie jednak oceniam tę wycieczkę na 4/5.",
+            "dateOfPurchase": "2022-06-16",
+            "rate": 4
+          },
+          {
+            "user": "malwina13pl",
+            "details": "Było luksusowo, tak jak oczekiwałem. Wreszcie na prawdę odpocząłem od pracy. Pogoda dopisała także na prawdę choćbym chciał, to nie mam na co narzekać. Jednym słowem BAJKA!",
+            "dateOfPurchase": "2022-06-12",
+            "rate": 5
+          }],
         "rate" : 4
       }
     ]

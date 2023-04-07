@@ -1,4 +1,4 @@
-<div [hidden]="submitted" id="adder">
+<div id="adder">
     <h2>Dodawanie wycieczki</h2>
     <form (ngSubmit)="onSubmit()" #addTravelForm="ngForm">
         <div class="form-group">
@@ -57,7 +57,4 @@
         </div>
         <button type="submit" [disabled]="!addTravelForm.form.valid" id="add-button">Dodaj</button>
     </form>
-</div>
-<div [hidden]="!submitted" id="another">
-    <button type="button" (click)="submitted=false; addTravelForm.reset()">Dodaj kolejną wycieczkę</button>
 </div>

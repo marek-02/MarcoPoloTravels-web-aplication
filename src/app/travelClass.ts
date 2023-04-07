@@ -1,6 +1,8 @@
+import { Opinion } from "./opinion";
 import { Travel } from "./travel";
 
 export class TravelClass implements Travel {
+    key: string
     name: string
     destination: string
     startDate: string
@@ -9,9 +11,12 @@ export class TravelClass implements Travel {
     seats: number
     description: string
     imgLink: string
+    allImages: string[]
+    opinions: Opinion[]
     rate: number
     
     constructor(
+        key: string,
         name: string,
         destination: string,
         startDate: string,
@@ -20,8 +25,11 @@ export class TravelClass implements Travel {
         seats: number, 
         description: string,
         imgLink: string,
+        allImages: string[],
+        opinions: Opinion[],
         rate: number
-    ) { 
+    ) {
+        this.key = key 
         this.name = name
         this.destination = destination
         this.startDate = startDate
@@ -30,6 +38,8 @@ export class TravelClass implements Travel {
         this.seats = seats
         this.description = description
         this.imgLink = imgLink
+        this.allImages = allImages
+        this.opinions = opinions
         this.rate = rate
     }
 }

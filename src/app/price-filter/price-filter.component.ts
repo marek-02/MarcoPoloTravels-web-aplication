@@ -9,16 +9,9 @@ import { TravelService } from '../travel.service';
 export class PriceFilterComponent {
   max : number
   min : number
-  price : number
   ts
 
   constructor(private service : TravelService) {
     this.ts = service
-    this.price = this.ts.maxPrice
-  }
-
-  change(e:any) {
-    this.price = e.target.value
-    this.ts.selectedPrice = this.price
   }
 }

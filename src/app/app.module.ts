@@ -16,6 +16,16 @@ import { AddTravelFormComponent } from './add-travel-form/add-travel-form.compon
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MainViewComponent } from './main-view/main-view.component';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
+import { TravelsViewComponent } from './travels-view/travels-view.component';
+import { TravelDetailsComponent } from './travel-details/travel-details.component';
+import { CartService } from './cart.service';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from '../environments/environment';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +35,14 @@ import { CartComponent } from './cart/cart.component';
     RatingComponent,
     FiltersComponent,
     DestinationFilterComponent, 
-    FilterPipe, PriceFilterComponent, DateFilterComponent, RatingFilterComponent, AddTravelFormComponent, CartComponent
+    FilterPipe, PriceFilterComponent, DateFilterComponent, RatingFilterComponent, AddTravelFormComponent, CartComponent, MainViewComponent, CartDetailsComponent, TravelsViewComponent, TravelDetailsComponent, HistoryComponent
   ],
   imports: [
     BrowserModule,
     CommonModule, 
-    FormsModule
+    FormsModule, AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig ),
+    AngularFirestoreModule
   ],
   providers: [TravelService],
   bootstrap: [AppComponent]

@@ -11,7 +11,5 @@ export class CartComponent {
 
   constructor(service: CartService) {
     this.cs = service
-  }
-
-  
+  }  
 }
