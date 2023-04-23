@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TravelService } from '../travel.service';
-import { TravelClass } from '../travelClass';
+import { TravelService } from '../../services/travel.service';
+import { TravelClass } from '../../models/travelClass';
 
 @Component({
   selector: 'app-add-travel-form',

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../cart.service';
-import { Opinion } from '../opinion';
-import { Travel } from '../travel';
-import { TravelService } from '../travel.service';
-import { TravelClass } from '../travelClass';
-import { FireStoreService } from '../fire-store-service.service';
+import { CartService } from '../../services/cart.service';
+import { Opinion } from '../../models/opinion';
+import { Travel } from '../../models/travel';
+import { TravelService } from '../../services/travel.service';
+import { TravelClass } from '../../models/travelClass';
+import { FireStoreService } from '../../services/fire-store-service.service';
 
 @Component({
   selector: 'app-travel-details',

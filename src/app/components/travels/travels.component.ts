@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TravelService } from '../travel.service'; 
-import { Travel } from '../travel';
+import { TravelService } from '../../services/travel.service'; 
+import { Travel } from '../../models/travel';
 
 @Component({
   selector: 'app-travels',

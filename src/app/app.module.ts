@@ -2,30 +2,30 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { TravelComponent } from './travel/travel.component';
-import { TravelsComponent } from './travels/travels.component';
-import { RatingComponent } from './rating/rating.component';
-import { FiltersComponent } from './filters/filters.component';
-import { DestinationFilterComponent } from './destination-filter/destination-filter.component';
-import { FilterPipe } from './filterPipe';
-import { TravelService } from './travel.service';
-import { PriceFilterComponent } from './price-filter/price-filter.component';
-import { DateFilterComponent } from './date-filter/date-filter.component';
-import { RatingFilterComponent } from './rating-filter/rating-filter.component';
-import { AddTravelFormComponent } from './add-travel-form/add-travel-form.component';
+import { TravelComponent } from './components/travel/travel.component';
+import { TravelsComponent } from './components/travels/travels.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { DestinationFilterComponent } from './components/destination-filter/destination-filter.component';
+import { FilterPipe } from './pipes/filterPipe';
+import { TravelService } from './services/travel.service';
+import { PriceFilterComponent } from './components/price-filter/price-filter.component';
+import { DateFilterComponent } from './components/date-filter/date-filter.component';
+import { RatingFilterComponent } from './components/rating-filter/rating-filter.component';
+import { AddTravelFormComponent } from './components/add-travel-form/add-travel-form.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './components/cart/cart.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MainViewComponent } from './main-view/main-view.component';
-import { CartDetailsComponent } from './cart-details/cart-details.component';
-import { TravelsViewComponent } from './travels-view/travels-view.component';
-import { TravelDetailsComponent } from './travel-details/travel-details.component';
-import { CartService } from './cart.service';
+import { MainViewComponent } from './components/main-view/main-view.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { TravelsViewComponent } from './components/travels-view/travels-view.component';
+import { TravelDetailsComponent } from './components/travel-details/travel-details.component';
+import { CartService } from './services/cart.service';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { HistoryComponent } from './history/history.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [

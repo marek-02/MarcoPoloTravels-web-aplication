@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TravelService } from '../travel.service';
+import { TravelService } from '../../services/travel.service';
 
 @Component({
   selector: 'app-rating-filter',

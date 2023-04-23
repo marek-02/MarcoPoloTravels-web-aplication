@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { min } from "rxjs";
-import { Travel } from "./travel";
+import { Travel } from "../models/travel";
 
 @Pipe({ name: 'filterPipe', pure: false })
 export class FilterPipe implements PipeTransform {

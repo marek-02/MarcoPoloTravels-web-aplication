@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddTravelFormComponent } from './add-travel-form/add-travel-form.component';
-import { CartDetailsComponent } from './cart-details/cart-details.component';
-import { CartComponent } from './cart/cart.component';
-import { HistoryComponent } from './history/history.component';
-import { MainViewComponent } from './main-view/main-view.component';
-import { TravelDetailsComponent } from './travel-details/travel-details.component';
-import { TravelComponent } from './travel/travel.component';
-import { TravelsViewComponent } from './travels-view/travels-view.component';
-import { TravelsComponent } from './travels/travels.component';
+import { AddTravelFormComponent } from './components/add-travel-form/add-travel-form.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CartComponent } from './components/cart/cart.component';
+import { HistoryComponent } from './components/history/history.component';
+import { MainViewComponent } from './components/main-view/main-view.component';
+import { TravelDetailsComponent } from './components/travel-details/travel-details.component';
+import { TravelComponent } from './components/travel/travel.component';
+import { TravelsViewComponent } from './components/travels-view/travels-view.component';
+import { TravelsComponent } from './components/travels/travels.component';
 
 
 const routes: Routes = [

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import * as travelsData from '../assets/travels.json'
+import * as travelsData from '../../assets/travels.json'
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Opinion } from './opinion';
-import { Travel } from './travel';
+import { Opinion } from '../models/opinion';
+import { Travel } from '../models/travel';
 import { FireStoreService } from './fire-store-service.service';
 import { of } from 'rxjs';
 

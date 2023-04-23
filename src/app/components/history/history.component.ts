@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CartService } from '../cart.service';
-import { Purchase } from '../purchase';
-import { Travel } from '../travel';
+import { CartService } from '../../services/cart.service';
+import { Purchase } from '../../models/purchase';
+import { Travel } from '../../models/travel';
 
 @Component({
   selector: 'app-history',

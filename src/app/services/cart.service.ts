@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FireStoreService } from './fire-store-service.service';
-import { Purchase } from './purchase';
-import { Reservation } from './reservation';
-import { Travel } from './travel';
+import { Purchase } from '../models/purchase';
+import { Reservation } from '../models/reservation';
+import { Travel } from '../models/travel';
 import { TravelService } from './travel.service';
 
 @Injectable({

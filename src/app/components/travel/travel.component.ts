@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { CartService } from '../cart.service';
-import { Travel } from '../travel';
-import { TravelService } from '../travel.service';
+import { CartService } from '../../services/cart.service';
+import { Travel } from '../../models/travel';
+import { TravelService } from '../../services/travel.service';
 
 @Component({
   selector: 'app-travel',
