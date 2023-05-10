@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Travel } from '../../models/travel';
+import { Travel } from '../../models/trip';
 import { TravelService } from '../../services/travel.service';
 
 @Component({

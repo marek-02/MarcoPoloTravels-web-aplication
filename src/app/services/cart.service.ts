@@ -1,122 +1,99 @@
 import { Injectable } from '@angular/core';
-import { FireStoreService } from './fire-store-service.service';
-import { Purchase } from '../models/purchase';
+import { DBService } from './db.service';
+// import { Purchase } from '../models/u_purchase';
 import { Reservation } from '../models/reservation';
-import { Travel } from '../models/travel';
+import { Trip } from '../models/trip';
 import { TravelService } from './travel.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   reservations : Reservation[] = []
-  purchases : Purchase[] = []
+  purchases : Reservation[] = []
   
-  fullPrice = 0
+  fullPrice: 0
   fullReservations = 0
 
-  constructor(private fireService: FireStoreService, private ts: TravelService) { 
-    this.fireService.getReservations().subscribe(res => {
-      this.reservations = res.map(e => {
-        return {
-          ...e.payload.doc.data() as {},
-          key: e.payload.doc.id,
-        } as Reservation
-      })
-      this.fullReservations = this.reservations.map(r => r.seats).reduce((a, b) => a + b, 0)
-      this.fullPrice = 0
-      this.reservations.forEach(a => this.fullPrice += a.seats * a.price)
+  constructor(private dbService: DBService, private ts: TravelService) { 
+    this.dbService.getReservations().subscribe(res => {
+      res = res.filter(x => x.state == "New")
+      this.reservations = res
+      this.fullReservations = this.reservations.map(r => r.boughtTickets).reduce((a, b) => a + b, 0)
+      // this.fullPrice = 0
+      // this.reservations.forEach(a => {
+      //   this.fullPrice = this.dbService.getTravelByKey(a.trip_id).subscribe(res => res.unitPrice * a.boughtTickets)  
+      // })
     })
-    this.fireService.getPurchases().subscribe(res => {
-      this.purchases = res.map(e => {
-        return {
-          ...e.payload.doc.data() as {},
-          key: e.payload.doc.id
-        } as Purchase
-      })
+    this.dbService.getReservations().subscribe(res => {
+      res = res.filter(x => x.state == "Purchased")
+      this.purchases = res
     })
   }
 
-  findReservation(r: Reservation) {
-    for(let i = 0; i < this.reservations.length; i++) {
-      if(this.reservations[i].travelKey == r.travelKey) {
-        r.key = this.reservations[i].key
-        return i      
+  findReservation(t_id: string, reservations : Reservation[]) {
+    for(let i = 0; i < reservations.length; i++) {
+      if(reservations[i].trip_id == t_id) {
+        return i
       }
     }
     return -1
   }
 
   hasAnyReservation(travelKey: string) {
-    for(let i = 0; i < this.reservations.length; i++) if(this.reservations[i].travelKey == travelKey) return true
+    for(let i = 0; i < this.reservations.length; i++) if(this.reservations[i].trip_id == travelKey) return true
     return false
   }
 
-  travelToReservation(t: Travel) {    
+  travelToReservation(t: Trip) {    
     return {
-      travelKey: t.key,
-      key: "",
-      name: t.name,
-      destination: t.destination,
-      startDate: t.startDate,
-      endDate: t.endDate,
-      price: t.price,
-      seats: 1
+      id: undefined,
+      purchaseDate: undefined,
+      boughtTickets: 1,
+      state: "New",
+      customer_id: "6447a9ead297195ac0dd2413",
+      trip_id: t.id
     } as Reservation
   }
 
-  reserve(t: Travel) {        
+  reserve(t: Trip) {        
     const r : Reservation = this.travelToReservation(t)
-    let index = this.findReservation(r)
+    let index = this.findReservation(t.id, this.reservations)
     
-    if(index == -1) this.fireService.newReservation(r)
-    else this.fireService.updateReservation(r.key, this.reservations[index].seats + 1)
-    this.fireService.changeSeats(r.travelKey, this.ts.getTravelSeats(r.travelKey) - 1)
+
+    if(index == -1) this.dbService.newReservation(r)
+    else this.dbService.updateReservation(this.reservations[index].id || '', this.reservations[index].boughtTickets + 1)
+    this.dbService.changeSeats(r.trip_id, this.ts.getTravelSeats(r.trip_id) - 1)
   }
 
-  resing(t : Travel) { 
+  resing(t : Trip) { 
     const r : Reservation = this.travelToReservation(t)
-    this.fireService.changeSeats(r.travelKey, this.ts.getTravelSeats(r.travelKey) + 1)
-    let index = this.findReservation(r)
+    this.dbService.changeSeats(r.trip_id, this.ts.getTravelSeats(r.trip_id) + 1)
+    let index = this.findReservation(r.trip_id, this.reservations)
 
     if(index != -1) {
-      if(this.reservations[index].seats - 1 == 0) this.fireService.deleteReservation(r.key)
-      else this.fireService.updateReservation(r.key, this.reservations[index].seats - 1)
+      if(this.reservations[index].boughtTickets - 1 == 0) this.dbService.deleteReservation(this.reservations[index].id || '')
+      else this.dbService.updateReservation(this.reservations[index].id || '', this.reservations[index].boughtTickets - 1)
     }
   }
 
-  findPurchase(p: Purchase) {
-    for(let i = 0; i < this.purchases.length; i++) {
-      if(this.purchases[i].travelKey == p.travelKey) {
-        p.key = this.purchases[i].key
-        return i      
-      }
-    }
-    return -1
-  }
 
   reservationToPurchase(r: Reservation) {
     return {
-      travelKey: r.travelKey,
-      key: "",
-      name: r.name,
-      destination: r.destination,
-      startDate: r.startDate,
-      endDate: r.endDate,
-      dateOfPurchase: new Date().toString(),
-      price: r.price,
-      seats: r.seats
-    } as Purchase
+      ...r,
+      state: "Purchased"
+    } as Reservation
   }
 
   buy(r: Reservation) {
-    const p : Purchase = this.reservationToPurchase(r)
-    let index = this.findPurchase(p)
+    const p : Reservation = this.reservationToPurchase(r)
+    let index = this.findReservation(r.trip_id, this.purchases)
     
-    if(index == -1) this.fireService.newPurchase(p) 
-    else this.fireService.updatePurchase(p.key, p.seats + this.purchases[index].seats)
-    console.log(index, p.seats, this.purchases[index].seats);
+    if(index == -1) this.dbService.newReservation(p) 
+    else this.dbService.updateReservation(this.purchases[index].id || '', p.boughtTickets + this.purchases[index].boughtTickets)
+    // console.log(index, p.seats, this.purchases[index].seats);
     
-    this.fireService.deleteReservation(r.key)
+    this.dbService.deleteReservation(r.id || '')
   }
 }

@@ -8,10 +8,12 @@
     </div>
     
     <div *ngFor="let reservation of cs.reservations, index as i" class="detail">
-        {{ reservation.name }}<br> 
-        {{ reservation.seats }} x {{ reservation.price | currency: 'EUR' }}
+        WYCIECZKA IMIE <br>
+        <!-- {{ reservation.name }}<br>  -->
+        <!-- {{ reservation.seats }} x {{ reservation.price | currency: 'EUR' }} -->
+        {{ reservation.boughtTickets }} x {{ 10 | currency: 'EUR' }}
         <div class="r">
-            {{ reservation.seats * reservation.price | currency:'EUR' }}
+            {{ reservation.boughtTickets * 10 | currency:'EUR' }}
         </div>
     </div>
     <div id="summary" [ngClass]="{'few': cs.fullReservations < 10, 'many': cs.fullReservations >= 10}" *ngIf="cs.fullReservations > 0">{{ cs.fullPrice | currency:'EUR' }}</div>

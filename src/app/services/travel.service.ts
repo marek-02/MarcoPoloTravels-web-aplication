@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as travelsData from '../../assets/travels.json'
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Opinion } from '../models/opinion';
-import { Travel } from '../models/travel';
-import { FireStoreService } from './fire-store-service.service';
+import { Review } from '../models/review';
+import { Trip } from '../models/trip';
+import { DBService } from './db.service';
 import { of } from 'rxjs';
 
 
@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 })
 export class TravelService {
   JSONdata = travelsData
-  travels : Travel[] = []
+  travels : Trip[] = []
   locations : string[] = []
   selectedLocations : string[] = []
   selectedStars : number[] = []
@@ -20,14 +20,9 @@ export class TravelService {
   minDate : Date
   maxDate : Date
 
-  constructor(private fireService: FireStoreService) {     
-    this.fireService.getTravels().subscribe(res => {
-      this.travels = res.map(e => {
-        return {
-          ...e.payload.doc.data() as {},
-          key: e.payload.doc.id
-        } as Travel
-      })
+  constructor(private dbService: DBService) {     
+    this.dbService.getTravels().subscribe(res => {
+      this.travels = res
       this.setLocations()
       this.selectedPrice = this.maxPrice
       this.minDate = new Date()
@@ -36,28 +31,28 @@ export class TravelService {
   }
 
   getTravelSeats(travelKey: string) {
-    for(let i = 0; i < this.travels.length; i++) if(this.travels[i].key == travelKey) return this.travels[i].seats
+    for(let i = 0; i < this.travels.length; i++) if(this.travels[i].id == travelKey) return this.travels[i].availableSeats
     return -1
   }
 
   get maxPrice() {
     if(this.travels.length == 0) return 0
-    let m = this.travels[0].price
-    for(let travel of this.travels) if(travel.price > m) m = travel.price
+    let m = this.travels[0].unitPrice
+    for(let travel of this.travels) if(travel.unitPrice > m) m = travel.unitPrice
     return m
   }
   
   get minPrice() {
     if(this.travels.length == 0) return 0
-    let tmp = this.travels[0].price
-    for(let travel of this.travels) if(travel.price < tmp) tmp = travel.price
+    let tmp = this.travels[0].unitPrice
+    for(let travel of this.travels) if(travel.unitPrice < tmp) tmp = travel.unitPrice
     return tmp
   }
   
   setMaxDate() {
-    let tmp = new Date(this.travels[0].endDate)
+    let tmp = this.travels[0].endDate
     for(let travel of this.travels) {
-      let cur = new Date(travel.endDate)
+      let cur = travel.endDate
       if(cur > tmp) tmp = cur
     }
     return tmp
@@ -71,20 +66,20 @@ export class TravelService {
     }, []).sort()
   }
   
-  addOpinion(t: Travel, o: Opinion) {
-    t.opinions.push(o)
-    this.fireService.addOpinion(t)
-  }
+  // addOpinion(t: Travel, o: Opinion) {
+  //   t.opinions.push(o)
+  //   this.fireService.addOpinion(t)
+  // }
 
-  addTravel(t : Travel) {
+  addTravel(t : Trip) {
     // this.travels.push(t)
-    this.fireService.addTravel(t)
+    this.dbService.addTravel(t)
     this.setLocations()
   }
 
-  deleteTravel(travel : Travel) {
+  deleteTravel(travel : Trip) {
     let tmp = this.travels.indexOf(travel)
-    if(tmp != -1) this.fireService.deleteTravel(travel.key)
+    if(tmp != -1) this.dbService.deleteTravel(travel.id)
     //this.travels = this.travels
     this.setLocations()
   }

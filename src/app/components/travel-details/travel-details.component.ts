@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
-import { Opinion } from '../../models/opinion';
-import { Travel } from '../../models/travel';
+import { Opinion } from '../../models/review';
+import { Travel } from '../../models/trip';
 import { TravelService } from '../../services/travel.service';
-import { TravelClass } from '../../models/travelClass';
+import { TravelClass } from '../../models/u_travelClass';
 import { FireStoreService } from '../../services/fire-store-service.service';
 
 @Component({
