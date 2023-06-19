@@ -88,19 +88,11 @@ export class TravelService {
     return 1
   }
 
-  addTravel(t : Trip) {
-    //// this.travels.push(t)
-    console.log("addTravel()");
-    // this.dbService.addTravel(t)
-    // this.setLocations()
+  newTravel(title: string, destination: string, description: string, startDate: string, endDate: string, seats: number, unitPrice: number) {        
+    this.dbService.newTravel(title, destination, description, startDate, endDate, seats, unitPrice)
   }
 
-  deleteTravel(travel : Trip) {
-    console.log("deleteTravel()");
-    // let tmp = this.travels.indexOf(travel)
-    // if(tmp != -1) this.dbService.deleteTravel(travel.id)
-    
-    ////this.travels = this.travels
-    // this.setLocations()
+  deleteTravel(tripId : string) {
+    this.dbService.deleteTravel(tripId)
   }
 }
