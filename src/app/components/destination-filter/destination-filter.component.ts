@@ -15,12 +15,12 @@ export class DestinationFilterComponent {
   }
 
   change(loc : string) {
-    let tmp = this.selectedLocations.indexOf(loc)
-    if(tmp == -1) {
+    let indexLoc = this.selectedLocations.indexOf(loc)
+    if(indexLoc == -1) {
       this.selectedLocations.push(loc)    
       this.selectedLocations.sort()
     }
-    else this.selectedLocations.splice(tmp, 1)
+    else this.selectedLocations.splice(indexLoc, 1)
     this.ts.selectedLocations = this.selectedLocations
   }
 }

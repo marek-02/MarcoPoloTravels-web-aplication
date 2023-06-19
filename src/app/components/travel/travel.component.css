@@ -40,11 +40,25 @@ button {
 }
 
 #button-container {
-    margin-top: 40px;
+    margin-top: 30px;
+}
+
+#warning, #finished-info {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 #warning {
-    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+#finished-info a:link, a:visited, a:hover, a:active {
+    text-decoration: underline;
+    color: black;
+}
+
+#finished-info {
+    margin-top: 50px;
 }
 
 #reservation {

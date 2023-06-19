@@ -10,8 +10,8 @@ export class RatingComponent {
   @Output() rate = new EventEmitter<number>()
 
 
-  star(n : number) {
-    this.rating = n
-    this.rate.emit(this.rating)
-  }
+  // star(n : number) {
+  //   this.rating = n
+  //   this.rate.emit(this.rating)
+  // }
 }

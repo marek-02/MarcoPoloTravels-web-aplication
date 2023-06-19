@@ -1,9 +1,14 @@
 import { Adress } from "./adress";
 export interface Customer {
-    id: string,
+    _id: string,
+    username: string,
     firstName: string,
     lastName: string,
     email: string,
     phoneNumber: string,
-    adress: Adress
+    adress: Adress,
+    reservations: {
+        reservationId: string,
+        tripId: string
+    }[]
 }

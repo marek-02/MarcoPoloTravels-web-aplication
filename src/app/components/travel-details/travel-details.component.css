@@ -58,6 +58,21 @@ li {
 
 #button-container {
     margin-top: 25px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#tickets {
+    background-color: rgb(227, 235, 248);
+    font-weight: 600;
+    border: 0;
+    width: 35px;
+}
+
+#finished-info {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 #plus, #minus {
@@ -99,7 +114,7 @@ li {
     border-top: 1px dashed;
 }
 
-input.ng-valid{
+.review-input.ng-valid{
     border-left: 5px solid rgb(113, 201, 206);
 }
 

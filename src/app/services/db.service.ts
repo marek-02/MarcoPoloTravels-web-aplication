@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { Purchase } from '../models/u_purchase';
 import { Reservation } from '../models/reservation';
 import { Trip } from '../models/trip';
+import { Purchase } from '../models/purchase';
+import { Review } from '../models/review';
 
 const tripsUrl = 'http://localhost:8080/trips';
-const reviewsUrl = 'http://localhost:8080/reviews';
 const customersUrl = 'http://localhost:8080/customers';
+const purchasesUrl = 'http://localhost:8080/purchases';
 const reservationsUrl = 'http://localhost:8080/reservations';
 
 @Injectable({
@@ -25,60 +27,51 @@ export class DBService {
     return this.http.get<Trip>(`${tripsUrl}/${key}`)
   }
 
-  getReservations(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(reservationsUrl)
+  getReservations(customerId: string): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${reservationsUrl}/${customerId}`)
   }
 
-  // getPurchases() {
-  //   return this.db.collection("Zakupy").snapshotChanges()
-  // }
-
-  newReservation(r: Reservation): Observable<Reservation> {        
-    return this.http.post<Reservation>(reservationsUrl, r)
+  getPurchases(customerId: string): Observable<Purchase[]> {
+    return this.http.get<Purchase[]>(`${purchasesUrl}/${customerId}`)
   }
 
-  updateReservation(key: string, numberOfSeats: number): Observable<Reservation> {    
-    return this.http.put<Reservation>(`${reservationsUrl}/${key}`, {boughtTickets: numberOfSeats})
+  newReservation(tripId: string, tickets: number, price: number, customerId: string) {        
+    const body = new HttpParams().set("tripId", tripId)
+                                 .set("tickets", tickets)
+                                 .set("price", price)
+                                 .set("customerId", customerId)
+
+    return this.http.post<Reservation>(reservationsUrl, body).subscribe()
   }
-
-  changeSeats(travelKey: string, seats: number): Observable<Trip> {
-    return this.http.put<Trip>(`${tripsUrl}/${travelKey}`, {availableSeats: seats})
-  }
-
-  deleteReservation(key: string): Observable<Reservation> {
-    return this.http.delete<Reservation>(`${reservationsUrl}/${key}`)
-  }
-
-  // newPurchase(r: Purchase) {    
-  //   this.db.collection("Zakupy").add({
-  //     name: r.name,
-  //     destination: r.destination,
-  //     startDate: r.startDate,
-  //     endDate: r.endDate,
-  //     dateOfPurchase: r.dateOfPurchase,
-  //     price: r.price,
-  //     seats: r.seats,
-  //     travelKey: r.travelKey
-  //   })
-  // }
-
-  // updatePurchase(key: string, numberOfSeats: number) {
-  //   this.db.collection("Zakupy").doc(key).update({seats: numberOfSeats})
-  // }
   
-  // addOpinion(t: Trip): Observable<Trip> {
+  resignReservation(tripId: string, reservationId: string) {    
+    const body = new HttpParams().set("tripId", tripId)
+                                 .set("reservationId", reservationId)
+
+    return this.http.put<Reservation>(reservationsUrl, body).subscribe()
+  }
+
+  newPurchase(tripId: string, reservationId: string) {    
+    const body = new HttpParams().set("tripId", tripId)
+                                 .set("reservationId", reservationId)
+
+    return this.http.put<Reservation>(purchasesUrl, body).subscribe()
+  }
+  
+  newOpinion(tripId: string, reservationId: string, comment: string, rating: number) {
+    const body = new HttpParams().set("tripId", tripId)
+                                 .set("reservationId", reservationId)
+                                 .set("comment", comment)
+                                 .set("rating", rating)
+
+    return this.http.post<Reservation>(`${reservationsUrl}/review`, body).subscribe()
+  }
+
+  // addTravel(t: Trip): Observable<Trip> {
   //   return this.http.post<Trip>(tripsUrl, t)
   // }
 
-  // updateRate(t: Travel, r: number) {    
-  //   this.db.collection("Wycieczki").doc(t.key).update({rate: r})
+  // deleteTravel(key: string): Observable<Trip> {
+  //   return this.http.delete<Trip>(`${tripsUrl}/${key}`)
   // }
-
-  addTravel(t: Trip): Observable<Trip> {
-    return this.http.post<Trip>(tripsUrl, t)
-  }
-
-  deleteTravel(key: string): Observable<Trip> {
-    return this.http.delete<Trip>(`${tripsUrl}/${key}`)
-  }
 }

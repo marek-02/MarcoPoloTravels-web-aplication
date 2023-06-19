@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Travel } from '../../models/trip';
+import { Trip } from '../../models/trip';
 import { TravelService } from '../../services/travel.service';
 
 @Component({
@@ -9,41 +9,27 @@ import { TravelService } from '../../services/travel.service';
   styleUrls: ['./travel.component.css']
 })
 export class TravelComponent {
-  @Input() travel : Travel
-  reservedSeats = 0
+  @Input() travel : Trip
+  reservedTickets = 0
   warning = "Zarezerwuj już dziś!"
   ts
   cs
 
   constructor(ts : TravelService, cs : CartService) {
     this.ts = ts
-    this.cs = cs
+    this.cs = cs  
   }
 
-  changeRate(r: number) {
-    const index = this.ts.travels.indexOf(this.travel)
-    this.ts.travels[index].rate = r    
+  isFinished(end : Date) {
+    return new Date(end) < new Date()
   }
 
-  reserve() : void {
-    this.cs.reserve(this.travel)
-    if(this.reservedSeats < this.travel.seats) {
-      this.reservedSeats++
-      if(this.reservedSeats == this.travel.seats) this.warning = "Brak wolnych miejsc."
-      else this.warning = "Zarezerwuj już dziś!"
-    }
-  }
-
-  resign() : void {
-    this.cs.resing(this.travel)
-    if(this.reservedSeats > 0) {
-      this.reservedSeats--
-    }
-    this.warning = "Zarezerwuj już dziś!"
+  isCurrent(start : Date, end : Date) {
+    return new Date(start) < new Date() && new Date(end) > new Date()
   }
 
   delete() : void {
-    this.reservedSeats = 0
+    this.reservedTickets = 0
     this.ts.deleteTravel(this.travel)
   }
 }

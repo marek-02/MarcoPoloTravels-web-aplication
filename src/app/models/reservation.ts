@@ -1,8 +1,13 @@
 export interface Reservation {
-    id?: string,
-    purchaseDate?: Date,
-    boughtTickets: number,
+    _id: string,
+    tripId: string,
+    title: string,
+    destination: string,
+    startDate: Date,
+    endDate: Date,
+    reservationDate: Date,
+    tickets: number,
+    price: number,
     state: string,
     customer_id: string,
-    trip_id: string
 }

@@ -41,3 +41,8 @@ h2, .detail, #info, #main span {
     text-align: right;
     background-color: gold;
 }
+
+#cart-link {
+    text-decoration: none;
+    color: black;
+}

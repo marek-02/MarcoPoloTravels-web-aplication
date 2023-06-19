@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
-import { Opinion } from '../../models/review';
-import { Travel } from '../../models/trip';
+// import { Opinion } from '../../models/review';
+import { Trip } from '../../models/trip';
 import { TravelService } from '../../services/travel.service';
-import { TravelClass } from '../../models/u_travelClass';
-import { FireStoreService } from '../../services/fire-store-service.service';
+import { Review } from 'src/app/models/review';
+// import { TravelClass } from '../../models/u_travelClass';
 
 @Component({
   selector: 'app-travel-details',
@@ -13,79 +13,52 @@ import { FireStoreService } from '../../services/fire-store-service.service';
   styleUrls: ['./travel-details.component.css']
 })
 export class TravelDetailsComponent {
-  isLoading = true
   imgIndex = 0
-  warning = "Zarezerwuj już dziś!"
+  allImages : string[]
+  reservedTickets = 1
   hideForm = true
-  travel: Travel = new TravelClass("", "", "", "", "", 0, 0, "", "", [], [], 0)
-  model: Opinion = {
-    user: "",
-    details: "",
-    dateOfPurchase: "",
-    rate: 0
-  }
+  travel: Trip
+  comment = ""
+  rating = 0
+
   cs
   ts
   
-  constructor(private service: TravelService, private route: ActivatedRoute, private cartService: CartService, private fireService: FireStoreService) {    
-    route.params.subscribe(params => 
-      this.fireService.getTravelByKey(params['key']).subscribe(res => this.travel = {
-        ...res.payload.data() as {},
-        key: res.payload.id
-      } as Travel))
+  constructor(private travelService: TravelService, private route: ActivatedRoute, private cartService: CartService) {    
     this.cs = cartService
-    this.ts = service
+    this.ts = travelService
+    route.params.subscribe(params => this.ts.getTravelByKey(params['key']).subscribe(res => {
+      this.travel = res      
+      this.allImages = [`/assets/images/${this.travel.destination}.jpg`, 
+                        `/assets/images/${this.travel.destination}2.jpg`,
+                        `/assets/images/${this.travel.destination}3.jpg`,]      
+    }))
   }
 
-  nextImage() { this.imgIndex = (this.imgIndex + 1) % this.travel.allImages.length}
-  prevImage() { this.imgIndex = (this.imgIndex - 1 + this.travel.allImages.length) % this.travel.allImages.length}
+  nextImage() { this.imgIndex = (this.imgIndex + 1) % this.allImages.length}
+  prevImage() { this.imgIndex = (this.imgIndex - 1 + this.allImages.length) % this.allImages.length}
 
-  changeRate(r: number) {
-    // const index = this.ts.travels.indexOf(this.travel)
-    // this.ts.travels[index].rate = r
-    console.log(this.travel);
-    
-    this.fireService.updateRate(this.travel, r)
+  isFinished(end : Date) {
+    return new Date(end) < new Date()
+  }
+  isCurrent(start : Date, end : Date) {
+    return new Date(start) < new Date() && new Date(end) > new Date()
   }
 
-  reserve() : void {
-    this.cs.reserve(this.travel) 
-
-    if(this.travel.seats == 0) this.warning = "Brak wolnych miejsc."
-    else this.warning = "Zarezerwuj już dziś!"
-  }
-  
-
-  resign() : void {
-    this.cs.resing(this.travel)
-    this.warning = "Zarezerwuj już dziś!"
+  reserve() : void {    
+    this.reservedTickets = 1
+    this.cs.reserve(this.travel._id, this.reservedTickets, this.travel.unitPrice) 
   }
 
   showForm() {
     this.hideForm = false
-    this.model.user = ""
-    this.model.details = ""
-    this.model.dateOfPurchase = ""
-    this.model.rate = 0
+    this.comment = ""
+    this.rating = 0
   }
 
   onSubmit() { 
-    this.travel.rate = this.model.rate
-    const opinion = {
-      user: this.model.user,
-      details: this.model.details,
-      dateOfPurchase: this.model.dateOfPurchase,
-      rate: this.model.rate
-    }
-    this.ts.addOpinion(this.travel, opinion)
-    this.hideForm = true
-  }
+    this.ts.newOpinion(this.travel._id, this.cs.purchaseForThisTrip(this.travel._id), this.comment, this.rating)
 
-  showDateOfPurchase(d : string) {
-    if(d != "") {
-      const date = new Date(d)
-      return "(kupiono " + date.getUTCDate() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCFullYear() + ")";
-    }
-    return ""
+    this.hideForm = true
   }
 }

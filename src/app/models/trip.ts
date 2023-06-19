@@ -1,7 +1,7 @@
 import { Review } from "./review";
 
 export interface Trip {
-    id: string,
+    _id: string,
     description: string,
     destination: string, 
     startDate: Date,
@@ -9,5 +9,6 @@ export interface Trip {
     availableSeats: number,
     title: string, 
     unitPrice: number,
-    images : Review[]
+    avgRating: number,
+    reviews: Review[]
 }

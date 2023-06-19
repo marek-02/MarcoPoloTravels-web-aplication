@@ -15,12 +15,13 @@ export class RatingFilterComponent {
   }
 
   change(rate : number) {
-    let tmp = this.selectedStars.indexOf(rate)
-    if(tmp == -1) {
+    let indexStar = this.selectedStars.indexOf(rate)
+    if(indexStar == -1) {
       this.selectedStars.push(rate)    
     }
-    else this.selectedStars.splice(tmp, 1)
+    else this.selectedStars.splice(indexStar, 1)
     this.ts.selectedStars = this.selectedStars
+    this.ts.changeArchiwe(true)
   }
 
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TravelComponent } from './components/travel/travel.component';
@@ -41,8 +42,7 @@ import { HistoryComponent } from './components/history/history.component';
     BrowserModule,
     CommonModule, 
     FormsModule, AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig ),
-    AngularFirestoreModule
+    HttpClientModule
   ],
   providers: [TravelService],
   bootstrap: [AppComponent]

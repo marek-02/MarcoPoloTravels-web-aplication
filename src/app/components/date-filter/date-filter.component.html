@@ -8,4 +8,8 @@
         do
         <input type="date" (change)="changeMax($event)" [value]="ts.maxDate | date:'yyyy-MM-dd'">
     </label>
+    <label>
+        <input type="checkbox" (change)="this.ts.changeArchiwe(!ts.showArchiwe)" [checked]="ts.showArchiwe">
+        Pokaż archiwalne
+    </label>
 </div>

@@ -42,17 +42,26 @@ h2, .detail, #info, #main span {
     text-align: right;
 }
 
-.reservation-container button {
-    display: block;
+.buttons-container {
     margin-left: auto;
     margin-right: 0;
     margin-top: 10px;
+    padding-bottom: 40px;
     font-weight: 600;
+}
+
+.buttons-container button {
+    float: right;
     padding: 10px;
     border: 0;
+    margin: 0 5px;
     cursor: pointer;
     border-radius: 10px;
     background-color: rgb(152, 168, 248);
+}
+
+#resign {
+    background-color: #E97777;
 }
 
 #summary {
