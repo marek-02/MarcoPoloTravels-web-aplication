@@ -44,6 +44,10 @@ export class CartService {
     })
   }
 
+  refreshCustomers() {    
+    this.dbService.getCustomers().subscribe(res => this.customers = res)
+  }
+
   refreshCustomer() {    
     console.log(this.reservations);
     
@@ -112,5 +116,14 @@ export class CartService {
 
   getCustomerByKey(key: string): Observable<Customer> {
     return this.dbService.getCustomerByKey(key)
+  }
+
+  newCustomer(c : Customer) {
+    this.dbService.newCustomer(c)
+    this.refreshCustomers()
+  }
+
+  deleteCustomer(id : string)  {
+    this.dbService.deleteCustomer(id)
   }
 }
