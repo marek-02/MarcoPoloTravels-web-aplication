@@ -38,7 +38,6 @@ const customerController = {
   createCustomer: async (req, res) => {
     try {
       const { country, city, street, postalCode, buildingNumber, apartmentNumber, ...rest } = req.body
-      console.log(rest);
       const data = {
         ...rest,
         address : {
@@ -50,7 +49,6 @@ const customerController = {
           apartmentNumber: apartmentNumber
         }
       }
-      console.log(data);
       
       const customer = new Customer(data);
       await customer.save();

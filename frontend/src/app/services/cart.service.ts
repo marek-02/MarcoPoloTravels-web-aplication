@@ -25,6 +25,10 @@ export class CartService {
   fullReservations = 0
 
   constructor(private dbService: DBService, private tService : TravelService ) { 
+    if(localStorage.getItem('lastLogged') !== null) {
+     this.startCustomerId = localStorage.getItem('lastLogged') || ""
+    }  
+    
     this.ts = tService
     this.dbService.getCustomers().subscribe(res => this.customers = res)
     this.dbService.getCustomerByKey(this.startCustomerId).subscribe(res => {
@@ -48,21 +52,18 @@ export class CartService {
     this.dbService.getCustomers().subscribe(res => this.customers = res)
   }
 
-  refreshCustomer() {    
-    console.log(this.reservations);
-    
+  refreshCustomer() {       
     this.dbService.getReservations(this.currentCustomer._id).subscribe(res => {
       this.reservations = res
       this.fullReservations = this.reservations.map(r => r.tickets).reduce((a, b) => a + b, 0)      
       this.fullPrice = this.reservations.map(r => r.tickets * r.price).reduce((a, b) => a + b, 0)
-      console.log(this.reservations);
     })
     this.dbService.getPurchases(this.currentCustomer._id).subscribe(res => {
       this.purchases = res
     })
     this.dbService.getCancelled(this.currentCustomer._id).subscribe(res => {
       this.cancelled = res
-    })
+    })    
   }
 
   changeCustomer(id: string) {
@@ -81,11 +82,11 @@ export class CartService {
         this.cancelled = res
       })
     })
+    localStorage.setItem('lastLogged', id)
   }
 
   purchaseForThisTrip(tripId: string) {    
     for(const purchase of this.purchases) {
-      console.log(purchase.tickets);
       if(purchase.tripId === tripId) {
         if(purchase.review)
           return ''
@@ -97,7 +98,7 @@ export class CartService {
   }
 
   reserve(tripId: string, tickets: number, price: number) {        
-    this.dbService.newReservation(tripId, tickets, price, "6447a9ead297195ac0dd240c")
+    this.dbService.newReservation(tripId, tickets, price, this.currentCustomer._id)
     this.ts.refreshTravels()
     this.refreshCustomer()
   }
