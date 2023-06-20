@@ -10,7 +10,6 @@ import { TravelService } from '../../services/travel.service';
 })
 export class TravelComponent {
   @Input() travel : Trip
-  warning = "Zarezerwuj już dziś!"
   ts
   cs
 

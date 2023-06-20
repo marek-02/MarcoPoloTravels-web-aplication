@@ -53,17 +53,7 @@ export class CartService {
   }
 
   refreshCustomer() {       
-    this.dbService.getReservations(this.currentCustomer._id).subscribe(res => {
-      this.reservations = res
-      this.fullReservations = this.reservations.map(r => r.tickets).reduce((a, b) => a + b, 0)      
-      this.fullPrice = this.reservations.map(r => r.tickets * r.price).reduce((a, b) => a + b, 0)
-    })
-    this.dbService.getPurchases(this.currentCustomer._id).subscribe(res => {
-      this.purchases = res
-    })
-    this.dbService.getCancelled(this.currentCustomer._id).subscribe(res => {
-      this.cancelled = res
-    })    
+    this.changeCustomer(this.currentCustomer._id)  //nie wiem czemu ale inaczej nie działa
   }
 
   changeCustomer(id: string) {

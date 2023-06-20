@@ -44,9 +44,10 @@ export class TravelDetailsComponent {
   }
 
   reserve() : void {    
-    this.cs.reserve(this.travel._id, this.reservedTickets, this.travel.unitPrice) 
+    if(this.reservedTickets > 0) this.cs.reserve(this.travel._id, this.reservedTickets, this.travel.unitPrice) 
     this.reservedTickets = 1
-    this.route.params.subscribe(params => this.ts.getTravelByKey(params['key']).subscribe(res => this.travel = res))
+    
+    this.ts.getTravelByKey(this.travel._id).subscribe(res => this.travel = res)
   }
 
   showForm() {
