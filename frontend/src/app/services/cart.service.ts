@@ -125,5 +125,6 @@ export class CartService {
 
   deleteCustomer(id : string)  {
     this.dbService.deleteCustomer(id)
+    this.refreshCustomers()
   }
 }
