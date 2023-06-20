@@ -43,10 +43,8 @@ const tripSchema = new mongoose.Schema({
 });
 
 tripSchema.pre('save', function(next) {
-  console.log(this);
-  const x = this.reservations.filter(x => x.state != 'Cancelled').map(x => x.tickets).reduce((a, b) => a + b, 0)
-  console.log("w validacie: ", x, this.seats)
-  if(this.seats < x){
+  const reservedSeats = this.reservations.filter(x => x.state != 'Cancelled').map(x => x.tickets).reduce((a, b) => a + b, 0)
+  if(this.seats < reservedSeats){
     next(new Error('Brak wolnych miejsc'))
   }
   else
