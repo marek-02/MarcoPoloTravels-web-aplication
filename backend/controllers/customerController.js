@@ -59,7 +59,24 @@ const customerController = {
   },
 
   deleteCustomer: async (req, res) => {
-    try {
+    try {      
+      let canBeDeleted = true
+      
+      const { reservations } = await Customer.findById(req.params.id).select('reservations').populate('reservations.tripId', 'reservations').lean()      
+      reservations.map(r => {
+        const {reservationId, tripId} = r
+        const filtered = tripId.reservations.find(r => r._id.equals(reservationId) && r.state != 'Cancelled')
+        if(filtered !== undefined) {
+          canBeDeleted = true
+        }
+        return filtered
+      })
+
+      if(!canBeDeleted) {
+        res.status(500).json({ message: "Cannot delete customer with reservations" });
+        return
+      }
+
       const deletedCustomer = await Customer.findByIdAndDelete(req.params.id);
       if (!deletedCustomer) {
         res.status(404).json({ message: "Customer not found" });
