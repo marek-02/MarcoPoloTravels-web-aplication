@@ -2,7 +2,7 @@
 Project made during Introduction to Internet Applications course and developed for the Databases course at AGH.
 
 ## About project
-MarcoPolo Travels is a web application that allows you to browse, filter, reserve and then purchase trips, as well as view your purchase history or cart. It also allows you to comment and rate purchased trips and view opinions left by other users. To make it easier to learn all the functionalities, you can create your own trips and add new users and switch between them without any authorization and authentication (several of them with some purchase history are already created and u can "use" them at the start).
+MarcoPolo Travels is a web application that allows you to browse, filter, reserve and then purchase trips, as well as view your purchase history or cart. It also allows you to comment and rate purchased trips and view opinions left by other users. To make it easier to explore all the functionalities, you can create your own trips and add new users and switch between them without any authorization and authentication (several of them with some purchase history are already created and u can "use" them at the start).
 
 ## Configuration
 clone:
