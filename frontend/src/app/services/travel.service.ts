@@ -26,7 +26,8 @@ export class TravelService {
       this.selectedPrice = this.maxPrice
       this.minDate = new Date()
       this.setMaxDate()
-      this.showArchiwe = false      
+      this.showArchiwe = false
+      this.changeArchiwe(true)
     })
   }
 
