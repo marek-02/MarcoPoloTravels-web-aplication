@@ -153,7 +153,7 @@
         "_id": ObjectId("6447af70d297195ac0dd2431"),
         "description": "Egzotyczna Tajlandia to wycieczka, która pozwoli Ci poznać niezwykłą kulturę i piękno tego egzotycznego kraju. Podczas wycieczki zwiedzisz między innymi stolicę Tajlandii - Bangkok, a także zwiedzisz malownicze miasta Chiang Mai i Ayutthaya. Możesz również zwiedzić świątynie buddyjskie i poznać lokalne zwyczaje i tradycje. Nie można też pominąć wizyty w parku narodowym i spróbowania egzotycznych potraw tajskiej kuchni. Niezapomniane widoki i niepowtarzalny klimat Tajlandii zapadną Ci na długo w pamięci. Nie przegap okazji, aby poznać egzotyczną Tajlandię z MarcoPolo Travels!",
         "destination": "Tajlandia",
-        "endDate": ISODate("2023-10-28T00:00:00.000Z"),
+        "endDate": ISODate("2023-10-21T00:00:00.000Z"),
         "seats": 15,
         "title": "Egzotyczna Tajlandia",
         "startDate": ISODate("2023-10-28T00:00:00.000Z"),
