@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Review } from '../models/review';
 import { Trip } from '../models/trip';
@@ -35,9 +34,6 @@ export class TravelService {
     this.dbService.getTravels().subscribe(res => {
       this.travels = res
       this.setLocations()
-      this.selectedPrice = this.maxPrice
-      this.minDate = new Date()
-      this.setMaxDate()
     })
   }
 

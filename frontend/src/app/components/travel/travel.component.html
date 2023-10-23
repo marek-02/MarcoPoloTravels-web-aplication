@@ -37,20 +37,15 @@
                 </p>
             </ng-template>
             <ng-template #future>
-                <div *ngIf="travel.availableSeats > 0; else noSeats">
-                    <p id="warning"> Zarezerwuj już dziś! </p>
-                    <a [routerLink]="travel._id">
-                        <button id="plus" 
-                            type="submit"
-                            [ngStyle]="{'background-color': travel.availableSeats  > 3 ? '#E8F3D6' : '#FCF9BE'}"
-                            [hidden]="travel.availableSeats == 0">  
-                            Zarezerwuj 
-                        </button>
-                    </a>
-                </div>
-                <ng-template #noSeats>
-                    <p id="warning"> Niestety, brak wolnych miejsc! </p>
-                </ng-template>
+                <p id="warning"> {{ warning }} </p>
+                <a [routerLink]="travel._id">
+                    <button id="plus" 
+                        type="submit"
+                        [ngStyle]="{'background-color': travel.availableSeats  > 3 ? '#E8F3D6' : '#FCF9BE'}"
+                        [hidden]="travel.availableSeats == 0">  
+                        Zarezerwuj 
+                    </button>
+                </a>
             </ng-template>
         </div>    
     </div>
